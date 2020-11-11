@@ -30,13 +30,10 @@ function remove(array, itemToRemove) {
 // returns the sum of those numbers.
 
 function sum(numbers) {
-// let numbers2=numbers
 let total=0
-
 for (let num of numbers) {
     total+=num
 }
-
 return total
 }
 
@@ -45,11 +42,13 @@ return total
 
 function average(numbers) {
     let total=0
-
-    for (let num of numbers) {
-        total+=num
+    let avg=0
+    if (numbers.length>0) {
+        avg=sum(numbers)/(numbers.length)
+        }
+    else {
+        avg=undefined
     }
-    let avg=total/(numbers.length)
     return avg
 }
 

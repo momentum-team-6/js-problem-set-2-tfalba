@@ -25,26 +25,26 @@ describe('remove', function () {
   })
 })
 
-describe('remove (preserve original array)', function () {
-  it('returns an array with the element removed', function () {
-    let array = ['Cadence', 'Ordel', 'Marion']
-    assert.deepEqual(
-      ['Cadence', 'Ordel'],
-      remove(array, 'Marion')
-    )
-    assert.deepEqual(['Cadence', 'Ordel', 'Marion'], array)
-  })
+// describe('remove (preserve original array)', function () {
+//   it('returns an array with the element removed', function () {
+//     let array = ['Cadence', 'Ordel', 'Marion']
+//     assert.deepEqual(
+//       ['Cadence', 'Ordel'],
+//       remove(array, 'Marion')
+//     )
+//     assert.deepEqual(['Cadence', 'Ordel', 'Marion'], array)
+//   })
 
-  it('removes all incidences of the element', function () {
-    let array = ['Cadence', 'Marion', 'Ordel', 'Marion']
-    assert.deepEqual(
-      ['Cadence', 'Ordel'],
-      remove(array, 'Marion')
-    )
+//   it('removes all incidences of the element', function () {
+//     let array = ['Cadence', 'Marion', 'Ordel', 'Marion']
+//     assert.deepEqual(
+//       ['Cadence', 'Ordel'],
+//       remove(array, 'Marion')
+//     )
 
-    assert.deepEqual(['Cadence', 'Marion', 'Ordel', 'Marion'], array)
-  })
-})
+//     assert.deepEqual(['Cadence', 'Marion', 'Ordel', 'Marion'], array)
+//   })
+// })
 
 describe('sum', function () {
   it('returns 0 for an empty array', function () {
