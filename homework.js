@@ -7,21 +7,17 @@
 // If the potential member is in the array, remove all instances of it from the array.
 
 function remove(array, itemToRemove) {
-    //find the itemToRemove in the array
-    // remove it from the array
-    //return the array
-    
+    let newArray=[]
     for (let arrayElem of array) {
-        let index=array.indexOf(arrayElem)
-        
-        if (arrayElem===itemToRemove) {
-            array.splice(index, 1)
+        if (arrayElem!==itemToRemove) {
+            newArray.push(arrayElem)
         }
     }
-    return array
-    console.log(array)
-    }
-   
+    return newArray
+}
+
+let testArray= ["Joey","Karen","Karen","Mike","Sam"]
+let resultArray= remove(testArray,"Karen")
 
 // 2. Revisit your "remove" function. Make sure that it does not change the original
 // array but instead returns a new array.
@@ -30,30 +26,36 @@ function remove(array, itemToRemove) {
 // returns the sum of those numbers.
 
 function sum(numbers) {
-let total=0
-for (let num of numbers) {
-    total+=num
-}
-return total
+    let total=0
+    for (let num of numbers) {
+        total+=num
+    }
+    return total
 }
 
 // 4. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
 
 function average(numbers) {
-    let total=0
-    let avg=0
+    let avg=undefined
     if (numbers.length>0) {
         avg=sum(numbers)/(numbers.length)
         }
-    else {
-        avg=undefined
-    }
     return avg
 }
 
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
+
+function minimum(numbers) {
+    let minNumber = undefined
+    for (let number of numbers) {
+        if (minNumber === undefined || number<minNumber) {
+            minNumber = number
+        }
+    }
+    return minNumber
+}
 
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
@@ -79,8 +81,87 @@ function average(numbers) {
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
 
+// use input, output, and holder arrays, probably somehow nest functions over holder array
+
+// run sortfunction on array
+//split takes inputArray and does two things-- it turns input array into only non-min items
+//and holderArray is now array of min
+//after executing split on input array push holderArray onto outputArray
+//set holderArray back to [] and rerun split on existing inputArray
+
+function split(array, itemToRemove, newArray) {
+    for (let arrayElem of array) {
+        let index=array.indexOf(arrayElem)
+        if (arrayElem===itemToRemove) {
+            newArray.push(itemToRemove)
+            array.splice(index, 1)
+        }
+    }
+}
+
+function dice(array) {
+    if (array.length>0) {
+        let holder=[]
+        split(array, minimum(array), holder)
+        for (let hold of holder) {
+            output.push(hold)
+        }
+    }
+    return output
+}
+
+function selectionSort(input) {
+    output=[]
+    while (input.length>0) {
+        dice(input)
+    }
+    return output
+}
+
+let inputArray=[3,1,1,3,5,2,9,19,17,4,18,16,2,8]
+
+console.log(selectionSort(inputArray), output)
+console.log(selectionSort([5]), output)
+
+//THESE ARE THE FILTERING METHOD WAYS OF HANDLING REMOVE PROBLEM
+//TRY REWRITING ABOVE USING THESE INSTEAD OF SPLIT
+
+// function remove(array, itemToRemove) {
+//     let newArray = array.filter(function (arrayElem) {
+//         return arrayElem !==itemToRemove
+//     })
+//     return newArray
+//     }
+
+// With above you can set something equal to remove(array, itemToRemove)
+// and then it will have the value of newArray.
+
+// function keep(array, itemToKeep) {
+//     let newArray = array.filter(function (arrayElem) {
+//         return arrayElem ===itemToKeep
+//     })
+//     return newArray
+// }
+
 // 7. Create a function called `textList` that takes an array and joins its elements
 // into a string separated by commas.
 //
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
+
+function textList(words) {
+    let textString=""
+    for (let word of words) {
+        if (words.length>1 && ((words.length-1) !== words.indexOf(word))) {
+            textString = textString  + word + ","
+        }
+        else if (words.length>1) {
+            textString = textString + word
+        }
+        else {
+            textString=word
+        }
+    }
+    return textString
+}
+
