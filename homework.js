@@ -44,6 +44,13 @@ function average(numbers) {
     return avg
 }
 
+// HOW CAN I DO SOME OF THE ABOVE USING ARROW FUNCTIONS?
+// (numbers) => {
+//     let sum=0
+//     for (let num of  numbers) {
+//         sum=sum+num
+//     }
+// }
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
 
